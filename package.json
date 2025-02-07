@@ -15,6 +15,7 @@
     "start-server-and-test": "^1.12.1"
   },
   "dependencies": {
+    "house-of-hummus-assessment": "file:",
     "serve": "^11.3.2"
   }
 }
