@@ -56,10 +56,17 @@ sequenceDiagram
 > 🧨 Before you click the "Assessment Complete" button on the Learning Platform, add your answers below for each question and make a commit. It is your option to request a face-to-face meeting with a coach for a vocabulary review.
 
 1. Should transient state be represented in a database diagram? Why, or why not?
-   > Your answer here
+   
+   > No. As transient state is not persistent. Database diagrams are meant to show the structure of persistent data.
+
 2. In the **FoodTruck** module, you are **await**ing the invocataion of all of the component functions _(e.g. sales, veggie options, etc.)_. Why must you use the `await` keyword there? Explain what happens if you remove it.
-   > Your answer here
+
+   >  The await keyword is used to wait for the completion of the asynchronous operations, which are initiated by the component functions, Sales, Entrees, Veggies, and Sides. If the `await` were removed then the code would execute before the async operatino is complete. This will lead to `FoodTruck.js` to try and render the components before the data is avalible.
+
 3. When the user is making choices by selecting radio buttons, explain how that data is retained so that the **Purchase Combo** button works correctly.
-   > Your answer here
+
+   > The user's selections are retained through an object instantiated in `transientState.js`. This  is updated whenever a radio button is selected through an even listener in `main.js`, and the `transientState` object stores the user's choices temporarily until the Purchase button is clicked. When the Purchase button is clicked, the submitOrder function retrieves the values from the transientState object and uses them to create a new purchase order.
+
 4. You used the `map()` array method in the self assessment _(at least, you should have since it is a learning objective)_. Explain why that function is helpful as a replacement for a `for..of` loop.
-   > Your answer here
+
+   > The `map()` methosd is a more concise way to transform the arrays in the database. While creating a new array. It saves us from having to explicitly iterate over each element of the array.
