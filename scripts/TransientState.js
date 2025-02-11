@@ -4,9 +4,13 @@ const transientState = {
     sideId: null
 };
 
-// Function to update the state when a selection is made
+
 export const setChoice = (category, value) => {
-    transientState[category] = value;
+    if (category === 'entreeId' || category === 'vegetableId' || category === 'sideId') {
+        transientState[category] = parseInt(value); // Parse the value to an integer
+    } else {
+        transientState[category] = value;
+    }
     console.log("Updated State:", transientState);
 };
 

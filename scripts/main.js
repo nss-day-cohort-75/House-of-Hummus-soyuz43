@@ -7,7 +7,7 @@ const renderAllHTML = async () => {
 
     document.querySelectorAll('input[type="radio"]').forEach(input => {
         input.addEventListener('change', (event) => {
-            const category = event.target.name; // "entree", "vegetable", or "side"
+            const category = event.target.name + 'Id'; // "entree", "vegetable", or "side"
             const value = event.target.value;
             setChoice(category, value); // Update the transient state
         });

@@ -130,5 +130,13 @@
       "price": 5.2
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "entreeId": 2,
+      "vegetableId": 6,
+      "sideId": 2,
+      "timestamp": 1739290819889,
+      "id": 1
+    }
+  ]
 }
