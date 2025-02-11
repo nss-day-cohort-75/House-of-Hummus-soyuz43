@@ -8,7 +8,7 @@ export const Sides = async () => {
         ${data.map((side) => `
             <div>
                 <input type="radio" id="side-${side.id}" name="side" value="${side.id}">
-                <label for="side-${side.id}">${side.title} - $${side.price}</label>
+                <label for="side-${side.id}">${side.title} - $${side.price.toFixed(2)}</label>
             </div>
             `).join('')}
             </div>
