@@ -17,9 +17,11 @@ export const Sales = async () => {
         // Convert purchases into a displayable list with expanded names
         let salesDivs = purchases.map(purchase => {
             // Find the matching entree, vegetable, and side based on IDs
-            const entree = entrees.find(e => e.id == purchase.entree);
-            const vegetable = vegetables.find(v => v.id == purchase.vegetable);
-            const side = sides.find(s => s.id == purchase.side);
+            const entree = entrees.find(e => e.id == purchase.entreeId);
+            const vegetable = vegetables.find(v => v.id == purchase.vegetableId);
+            const side = sides.find(s => s.id == purchase.sideId);
+
+            const totalPrice = (entree ? entree.price : 0) + (vegetable ? vegetable.price : 0) + (side ? side.price : 0);
 
             return `
             <div class="sale-item">
@@ -28,6 +30,7 @@ export const Sales = async () => {
                     Entree: ${entree ? entree.name : "Unknown"}, 
                     Vegetable: ${vegetable ? vegetable.type : "Unknown"}, 
                     Side: ${side ? side.title : "Unknown"}
+                    Total Price: $${totalPrice.toFixed(2)}
                 </p>
                 <small>Purchased at: ${new Date(purchase.timestamp).toLocaleString()}</small>
             </div>

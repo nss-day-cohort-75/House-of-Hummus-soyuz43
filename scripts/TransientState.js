@@ -1,3 +1,5 @@
+import { Sales } from "./Sales.js";
+
 const transientState = {
     entreeId: null,
     vegetableId: null,
@@ -42,6 +44,18 @@ export const submitOrder = async () => {
             transientState.entreeId = null;
             transientState.vegetableId = null;
             transientState.sideId = null;
+
+            // Call the Sales function to update the sales list
+            const salesHtml = await Sales();
+            document.querySelector(".customerOrders").innerHTML = `
+                <h2>Monthly Sales</h2>
+                ${salesHtml}
+            `;
+
+            // Reset the radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+            });
 
         } else {
             throw new Error("Failed to submit order.");

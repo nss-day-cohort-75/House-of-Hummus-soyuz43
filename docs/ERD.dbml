@@ -1,0 +1,26 @@
+Table base_dishes {
+  id int [pk, increment]
+  name varchar
+  price decimal
+}
+
+Table vegetables {
+  id int [pk, increment]
+  name varchar
+  price decimal
+}
+
+Table side_dishes {
+  id int [pk, increment]
+  name varchar
+  price decimal
+}
+
+Table sales {
+  id int [pk, increment]
+  baseDishId int [ref: > base_dishes.id]
+  vegetableId int [ref: > vegetables.id]
+  sideDishId int [ref: > side_dishes.id]
+  totalCost decimal
+  purchaseDate datetime
+}
