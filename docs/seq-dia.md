@@ -1,25 +1,21 @@
 ```mermaid
 sequenceDiagram
-    participant User as User
+    participant MenuModules as Menu Modules (Veg/Side/Base)
+    participant PurchaseButton as Purchase Button (Sales)
+    participant FoodTruckJS as FoodTruck.js (HTML Construct)
+    participant MainJS as Main.js
     participant UI as DOM
-    participant Main as Main.js
-    participant foodtruck.js as HTML Construct
-    participant Modules as Modules (Veg/Side/Base)
     participant Data as database.json
-    participant purchaseBtn as Purchase Button (Sales)
+    participant User as User
 
-    Data->>+Modules: Sends food data
-    Modules->>+foodtruck.js: Provide Base Dishes & Radio Buttons
-    foodtruck.js->>+Main: Constructed HTML elements
-    Main->>+UI: Render food options
-
-    User->>UI: Selects side, veg, and entree
-    UI->>purchaseBtn: Sends selection
-    User->>purchaseBtn: Clicks "Purchase Combo"
-    
-    purchaseBtn->>+Data: POST new purchase
-    Data-->>-purchaseBtn: Confirms purchase stored
-    purchaseBtn-->>-UI: Confirms purchase completed
-
-    Data-->>+UI: Updates ledger
-    UI-->>-User: Displays updated ledger
+    Data->>+MenuModules: Send available food data
+    MenuModules->>FoodTruckJS: Send Base Dishes & Radio Buttons
+    FoodTruckJS->>+MainJS: Constructs and sends HTML for rendering
+    MainJS->>UI: Render food selection options
+    User->>UI: Selects side/veg/entree
+    UI->>PurchaseButton: Send user-selected food choices
+    User->>PurchaseButton: Click "Purchase Combo"
+    PurchaseButton->>+Data: POST purchase data
+    Data->>-UI: Confirm purchase stored
+    PurchaseButton->>UI: Confirm purchase completed
+    UI->>User: Display updated ledger
