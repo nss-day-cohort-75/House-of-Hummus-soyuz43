@@ -17,8 +17,7 @@ sequenceDiagram
     UI->>TransientState: Send user-selected food choices
     User->>PurchaseButton: Click "Purchase Combo"
     PurchaseButton->>TransientState: Purchase Made
-    TransientState->>Data: Send Purchase Object
-    PurchaseButton->>+Data: POST purchase data
+    TransientState->>+Data: Send Purchase Object
     PurchaseButton->>UI: Window Alert that the purchase completed
     Data->>-UI: Confirm purchase stored
     UI->>User: Display updated ledger
