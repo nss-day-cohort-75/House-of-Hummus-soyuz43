@@ -179,6 +179,13 @@
       "sideId": 1,
       "timestamp": 1739374216318,
       "id": 7
+    },
+    {
+      "entreeId": 1,
+      "vegetableId": 1,
+      "sideId": 1,
+      "timestamp": 1739459990105,
+      "id": 8
     }
   ]
 }

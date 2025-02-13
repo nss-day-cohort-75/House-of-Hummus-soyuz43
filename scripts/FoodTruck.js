@@ -1,15 +1,18 @@
 import { Sales } from "./Sales.js"
-import { Entrees } from "./Entrees.js"
-import { Veggies } from "./Vegetables.js"
-import { Sides } from "./SideDishes.js"
+import { generateEntreeHTML } from "./Entrees.js"
+import { generateVegetablesHTML } from "./Vegetables.js"
+import { generateSidesHTML } from "./SideDishes.js"
+import { generateOrderButtonHTML } from "./OrderButton.js";
 
 export const FoodTruck = async () => {
     const salesHTML = await Sales()
-    const entreesHTML = await Entrees()
-    const veggiesHTML = await Veggies()
-    const sidesHTML = await Sides()
+    const sidesHTML = await generateSidesHTML();
+    const entreeHTML = await generateEntreeHTML();
+    const vegetablesHTML = await generateVegetablesHTML();
+    const orderButtonHTML = generateOrderButtonHTML();
 
-    return `
+
+    const fullHTML = `
         <header class="header">
             <img src="./images/hummus.png" class="logo" />
             <h1 class="title">Laura Kathryn's House of Hummus</h1>
@@ -18,12 +21,12 @@ export const FoodTruck = async () => {
 
         <article>
             <h2>Entrees</h2>
-            ${entreesHTML}
+            ${entreeHTML}
             <h2>Veggies</h2>
-            ${veggiesHTML}
+            ${vegetablesHTML}
             <h2>Sides</h2>
             ${sidesHTML}
-            <button id="purchase">Purchase Combo</button>
+            ${orderButtonHTML}
         </article>
 
         <article class="customerOrders">
@@ -31,6 +34,6 @@ export const FoodTruck = async () => {
             ${salesHTML}
         </article>
 
-    `
+    `;
+    return fullHTML
 }
-FoodTruck();
