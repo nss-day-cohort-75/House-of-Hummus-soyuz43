@@ -13,6 +13,7 @@ sequenceDiagram
     MenuModules->>FoodTruckJS: Send Base Dishes & Radio Buttons
     FoodTruckJS->>+MainJS: Constructs and sends HTML for rendering
     MainJS->>UI: Render food selection options
+    MainJs->>UI:Send Event Listeners
     User->>UI: Selects side/veg/entree
     UI->>TransientState: Send user-selected food choices
     User->>PurchaseButton: Click "Purchase Combo"
